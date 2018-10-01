@@ -1,0 +1,27 @@
+language: ruby
+
+rvm:
+- 2.5
+
+sudo: required
+
+services: docker
+
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - VERSION=1.52.0-01
+
+install:
+- bundle install --path vendor/bundle
+
+script:
+- bundle exec rspec
+
+before_deploy:
+- docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+deploy:
+  provider: script
+  script:  bash .travis/deploy.sh
+  on:
+    branch: master

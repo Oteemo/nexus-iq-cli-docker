@@ -1,5 +1,7 @@
 FROM openjdk:8-slim
 
+LABEL maintainer=gmead@oteemo.com
+
 ENV cliVersion 1.52.0-01
 
 RUN apt update && \
