@@ -1,8 +1,8 @@
 FROM openjdk:8-slim
 
-LABEL maintainer=gmead@oteemo.com
+LABEL maintainer=sbrown@oteemo.com
 
-ENV cliVersion 1.52.0-01
+ENV cliVersion 1.63.0-01
 
 RUN apt update && \
     apt install -y curl && \
@@ -11,4 +11,3 @@ RUN apt update && \
     mkdir -p /opt/nexus && \
     mv *.jar /opt/nexus/nexus-iq-cli.jar && \
     rm -rf /var/lib/apt/lists/*
-    
